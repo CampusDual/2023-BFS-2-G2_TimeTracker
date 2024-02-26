@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="PROJECTS"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>P_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>P_ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>p_id</GeneratedKey>
+    <Queries>
+        <Query id="projectTotalTime">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="P_ID" prefix="p" />
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH tabla AS(
+                            SELECT p_id, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time, sum(tm.tm_end_time - tm.tm_start_time) AS project_total_time_decimal
+                            FROM
+                                tasks t
+                            LEFT JOIN timers tm ON tm.t_id = t.t_id
+                            group by p_id),
+                    tablap AS(
+                            SELECT *, (p_name) AS p_name_title
+                            FROM
+                                projects
+                            group by p_id)
+                    SELECT
+                          #COLUMNS#
+                    FROM
+                          users_projects up
+                    LEFT JOIN tablap p ON up.p_id = p.p_id
+                    LEFT JOIN tabla t ON p.p_id = t.p_id
+                    #WHERE#
+                    order by P_DATE asc
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

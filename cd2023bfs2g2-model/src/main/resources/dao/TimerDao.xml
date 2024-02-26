@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="TIMERS"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>TM_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>TM_ID</Column>
+    </UpdateKeys>
+    <Queries>
+        <Query id="record">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="P_ID" prefix="p" />
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH tabla AS (
+                        SELECT t.*, p.p_name, t2.t_name , (tm_end_time - tm_start_time) AS tm_duration, (tm_end_time - tm_start_time) AS tm_duration_decimal
+                        FROM timers t
+                        INNER JOIN tasks t2 on t.t_id = t2.t_id
+                        INNER JOIN projects p on t2.p_id = p.p_id
+                    )
+                    SELECT #COLUMNS#
+                    FROM tabla
+                    #WHERE#
+                    ORDER BY tm_start_time DESC
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

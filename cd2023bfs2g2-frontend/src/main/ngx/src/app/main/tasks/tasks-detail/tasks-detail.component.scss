@@ -1,0 +1,44 @@
+@import 'src/assets/css/colors.scss';
+
+.finishTaskCheckbox{
+    overflow: hidden;
+}
+
+.task-detail {
+    background-color: #fff;
+    padding-bottom: 1rem;
+}
+
+.task-detail-form {
+    margin: auto;
+    width: 600px;
+    padding: 20px;
+}
+
+.task-details {
+    margin-bottom: 2rem;
+    .task-details-header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 3rem;
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        p {
+            font-size: 18px;
+            margin-block: 0;
+            text-align: center;
+        }
+
+        label {
+            color: $primary-color;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+}

@@ -2,7 +2,16 @@ export const SERVICE_CONFIG: Object = {
   'users': {
     'path': '/users'
   },
-  permissions: {
-    'path': '/permissions'
+  'projects': {
+    'path': '/projects'
   },
+  'tasks': {
+    'path': '/tasks'
+  },
+  'timers': {
+    'path': '/timers'
+  },
+  'usersProjects': {
+    'path': '/usersProjects'
+  }
 };

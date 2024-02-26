@@ -1,0 +1,8 @@
+<o-form service="usersProjects" query-on-init="no" entity="usersProject" keys="UP_ID" undo-button="no"
+    after-insert-mode="new">
+    <o-row>
+        <o-combo fxFlex attr="USER_" label="SELECT_USER" service="users" entity="user" value-column="USER_"
+            columns="USER_;NAME" visible-columns="NAME" keys="USER_" required="yes" null-selection="no" searchable="yes">
+        </o-combo>
+    </o-row>
+</o-form>

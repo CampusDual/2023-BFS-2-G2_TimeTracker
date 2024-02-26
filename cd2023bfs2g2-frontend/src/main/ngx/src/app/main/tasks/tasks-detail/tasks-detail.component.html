@@ -1,0 +1,84 @@
+<o-form #taskForm service="tasks" entity="projectTask" keys="T_ID" (onDataLoaded)="print($event)" header-actions="R;U;D" show-header-navigation="no" undo-button="no">
+    <o-text-input attr="T_ID" sql-type="INTEGER" hidden></o-text-input>
+    <o-row class="task-details">
+        <div class="task-details-header">
+            <div>
+                <label for="project-name-header">{{ 'P_NAME' | oTranslate }}</label>
+                <p #projectNameHeader id="project-name-header"></p>
+            </div>
+            <div>
+                <label for="task-name-header">{{ 'T_NAME' | oTranslate }}</label>
+                <p  #taskNameHeader id="task-name-header"></p>
+            </div>
+            <div>
+                <label for="task-owner-header">{{ 'T_OWNER' | oTranslate }}</label>
+                <p #taskOwnerHeader id="task-owner-header"></p>
+            </div>
+        </div>
+
+        <o-text-input class="input-padding" attr="P_NAME" read-only="yes" hidden="yes"></o-text-input>
+        <o-text-input attr="T_OWNER" read-only="yes" hidden="yes"></o-text-input>
+    </o-row>
+    <mat-tab-group oTabGroup="ontimize">
+        <mat-tab label="{{'TASK_DETAILS' | oTranslate}}">
+            <o-column title-label="TASK_DETAILS" class="task-detail-form">
+                <o-column title="{{ 'EDIT_FIELDS' | oTranslate }}"></o-column>
+                <o-row>
+                    <o-text-input class="input-padding" attr="T_NAME" fxFlex="60" required="no"></o-text-input>
+                    <o-date-input attr="T_DATE" fxFlex="40" read-only="true" class="read-only"></o-date-input>
+                </o-row>
+                <o-row>
+                    <o-textarea-input attr="T_DESCRIPTION" fxFlex="100"></o-textarea-input>
+                </o-row>
+                <o-row>
+                    <o-text-input #userTime attr="USER_TASK_TIME" fxFlex="50" read-only="true" class="input-padding read-only"></o-text-input>
+                    <o-text-input #userTotal attr="TOTAL_TASK_TIME" fxFlex="50" read-only="true" class="read-only"></o-text-input>
+                </o-row>
+                <o-row>
+                    <o-checkbox #taskCheckbox class="finishTaskCheckbox" attr="T_FINISHED" label="FINISHED_TASK"
+                        read-only="no"></o-checkbox>
+                </o-row>
+            </o-column>
+        </mat-tab>
+        <mat-tab label="{{'PERSONAL_RECORD' | oTranslate}}">
+            <o-table fxFlex attr="recordTable" service="timers" entity="record" keys="TM_ID" parent-keys="T_ID"
+                columns="TM_ID;T_NAME;TM_START_TIME;TM_END_TIME;TM_DURATION;TM_DURATION_DECIMAL"
+                virtual-scroll="no" controls="no"
+                visible-columns="TM_START_TIME;TM_END_TIME;TM_DURATION;TM_DURATION_DECIMAL"
+                default-visible-columns="TM_START_TIME;TM_END_TIME;TM_DURATION" query-rows="20">
+                <o-table-column attr="P_NAME" title="P_NAME"></o-table-column>
+                <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
+                <o-table-column attr="TM_START_TIME" title="STARTDATE" type="date"
+                    format="DD/MM/YYYY HH:mm"></o-table-column>
+                <o-table-column attr="TM_END_TIME" title="ENDDATE" type="date"
+                    format="DD/MM/YYYY HH:mm"></o-table-column>
+                <o-table-column attr="TM_DURATION" title="TM_DURATION" class="text-center">
+                    <app-duration-render></app-duration-render>
+                </o-table-column>
+                <o-table-column attr="TM_DURATION_DECIMAL" title="TM_DURATION_DECIMAL" class="text-center">
+                    <app-duration-decimal-render></app-duration-decimal-render>
+                </o-table-column>
+            </o-table>
+        </mat-tab>
+        <mat-tab label="{{'GLOBAL_RECORD' | oTranslate}}">
+            <o-table fxFlex attr="recordTable" service="timers" entity="recordGlobal" keys="TM_ID" parent-keys="T_ID"
+                columns="TM_ID;USER_;T_NAME;TM_START_TIME;TM_END_TIME;TM_DURATION;TM_DURATION_DECIMAL"
+                visible-columns="USER_;TM_START_TIME;TM_END_TIME;TM_DURATION;TM_DURATION_DECIMAL"
+                default-visible-columns="USER_;TM_START_TIME;TM_END_TIME;TM_DURATION" 
+                query-rows="20" virtual-scroll="no" controls="no">
+                <o-table-column attr="USER_" title="USER_"></o-table-column>
+                <o-table-column attr="T_NAME" title="T_NAME"></o-table-column>
+                <o-table-column attr="TM_START_TIME" title="STARTDATE" type="date"
+                    format="DD/MM/YYYY HH:mm"></o-table-column>
+                <o-table-column attr="TM_END_TIME" title="ENDDATE" type="date"
+                    format="DD/MM/YYYY HH:mm"></o-table-column>
+                <o-table-column attr="TM_DURATION" title="TM_DURATION" class="text-center">
+                    <app-duration-render></app-duration-render>
+                </o-table-column>
+                <o-table-column attr="TM_DURATION_DECIMAL" title="TM_DURATION_DECIMAL" class="text-center">
+                    <app-duration-decimal-render></app-duration-decimal-render>
+                </o-table-column>
+            </o-table>
+        </mat-tab>
+    </mat-tab-group>
+</o-form>

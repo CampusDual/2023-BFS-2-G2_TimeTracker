@@ -1,0 +1,63 @@
+@import 'src/assets/css/colors.scss';
+
+.usersProjectTable, .archiveProjectCheckbox {
+    overflow: hidden;
+}
+
+.container {
+   display: flex;
+   align-items: center;
+
+   o-checkbox {
+    margin-block: auto;
+    margin-left: auto;
+    padding-bottom: 1.34375em;
+   }
+}
+
+.project-details {
+    margin-bottom: 2rem;
+    .project-details-header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 3rem;
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            &.progress {
+                display: none;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            margin-block: 0;
+            text-align: center;
+        }
+
+        label {
+            color: $primary-color;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+}
+
+.project-alldetails {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.chartTitle {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tableContainers {
+    margin: 0 auto;
+}

@@ -1,0 +1,111 @@
+@import 'src/assets/css/colors.scss';
+
+.header-timer-controls {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  .timer-control-btns {
+    gap: 1rem;
+    padding: 0.5rem;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter 0.1s ease-in-out;
+
+      i {
+        color: #fff !important;
+      }
+
+      &:hover {
+        filter: brightness(1.2);
+        cursor: pointer;
+      }
+
+      &.iniciar-jornada {
+        background-color: $primary-color;
+      }
+
+      &.finalizar-jornada {
+        background-color: #e74c3c !important;
+      }
+
+      // &.pausar-jornada {
+      //     background-color: #00a86b !important;
+      // }
+
+      // &.reanudar-jornada {
+      //     background-color: #34495e !important;
+      // }
+    }
+  }
+
+  .tracking-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .tracking-form {
+      text-align: center !important;
+      flex: none !important;
+
+      o-combo {
+        width: 400px;
+      }
+    }
+  }
+
+  .countdown-container {
+    width: 100%;
+    margin-right: 10px;
+
+    .cancel-countdown {
+      display: flex;
+      margin-left: auto;
+      color: #fff;
+      background-color: #ff000094;
+      cursor: pointer;
+      border-radius: 3px;
+      padding: 5px;
+      max-width: 90px;
+      justify-content: space-between;
+      font-size: 15px;
+      transition: background-color 0.1s ease-in-out;
+
+      &:hover {
+        background-color: #cc0000;
+      }
+    }
+  }
+
+  .timer-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    .timer {
+      border-radius: 3px;
+      padding: 10px 15px;
+      width: 50px;
+      text-align: center;
+      color: #676bd2;
+      margin-left: auto; 
+      margin-right: 1rem;
+    }
+  }
+}

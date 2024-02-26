@@ -1,21 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
-import { FilterComponent } from './components/filters/filters.component';
-import { HomeToolbarComponent } from './components/home-toolbar/home-toolbar.component';
+import { DurationRenderComponent } from './duration-render/duration-render.component';
+import { TimerControlsComponent } from './timer-controls/timer-controls.component';
+import { DurationDecimalRenderComponent } from './duration-decimal-render/duration-decimal-render.component';
+import { BooleanActiveRenderComponent } from './boolean-active-render/boolean-active-render.component';
+import { BooleanFinishedRenderComponent } from './boolean-finished-render/boolean-finished-render.component';
 
 @NgModule({
   imports: [
     OntimizeWebModule
   ],
   declarations: [
-    FilterComponent,
-    HomeToolbarComponent
+  DurationRenderComponent,
+  TimerControlsComponent,
+  DurationDecimalRenderComponent,
+  BooleanActiveRenderComponent,
+  BooleanFinishedRenderComponent
   ],
   exports: [
     CommonModule,
-    FilterComponent,
-    HomeToolbarComponent
+    DurationRenderComponent,
+    TimerControlsComponent,
+    DurationDecimalRenderComponent,
+    BooleanActiveRenderComponent,
+    BooleanFinishedRenderComponent
   ]
 })
 export class SharedModule { }

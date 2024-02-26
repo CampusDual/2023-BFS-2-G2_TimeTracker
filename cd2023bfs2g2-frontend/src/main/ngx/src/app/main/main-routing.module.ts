@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from 'ontimize-web-ngx';
-
 import { MainComponent } from './main.component';
-import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -11,11 +9,12 @@ export const routes: Routes = [
     component: MainComponent,
     canActivate: [AuthGuardService],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'projects', pathMatch: 'full' },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-      { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-      { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
+      { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
+      { path: 'record', loadChildren: () => import('./record/record.module').then(m => m.RecordModule) },
+      
     ]
   }
 ];

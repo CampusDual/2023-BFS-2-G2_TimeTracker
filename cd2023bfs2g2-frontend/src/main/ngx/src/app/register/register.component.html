@@ -1,0 +1,47 @@
+<div class="full-page">
+  <div class="login-outer-container">
+
+    <div class="login-bg-container">
+    </div>
+
+    <div class="wrapp-login">
+      <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+          <div class="login-title-container" fxLayout="column">
+            <span class="title_text">{{ 'REGISTER_TITLE' | oTranslate }}:</span>
+          </div>
+
+          <div>
+            <mat-form-field fxFill class="m-top-16">
+              <input matInput #name class="mat-input" placeholder="{{ 'USERNAME' | oTranslate }}" id="name" [formControl]="nameCtrl">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxFill class="m-top-16">
+              <input matInput #password class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password" [formControl]="pwdCtrl">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxFill class="m-top-16">
+              <input matInput #password class="mat-input" placeholder="{{ 'REPEAT_PASSWORD' | oTranslate }}" id="repeat_password" type="password" [formControl]="rpwdCtrl">
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" type="submit">{{ 'SIGN_UP' | oTranslate }}</button>
+          <div class="already-acc">
+            <a routerLink="/login">{{ 'HAVE_ACC' | oTranslate }}</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer" class="footer-container">
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <span>{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
+      <span> · 2023 </span>
+    </div>
+  </div>
+
+</div>
